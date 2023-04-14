@@ -8,6 +8,11 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
+    path: '/index',
+    name: 'index',
+    component: HomeView,
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
@@ -16,9 +21,9 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
   },
 ];
-
+console.log('-----------sub application window.__POWERED_BY_QIANKUN__', window.__POWERED_BY_QIANKUN__);
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(window.__POWERED_BY_QIANKUN__ ? '/vueSubApp/' : process.env.BASE_URL),
   routes,
 });
 
